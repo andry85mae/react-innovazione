@@ -86,21 +86,19 @@ export class CarList extends React.Component<CarListProps, CarListState> {
             {this.state.carList.map((car:Car) =>{
                 
                
-                return <div className="col-md-4" key={car.Id} >
-                    <span className="js-fancybox">
+                return <div className="col-md-4" key={car.Id} style={{ marginBottom:'30px'}}>
+                    <span className="col-sm-5" style={{ border:'1px solid #f7f7f7'}}>
                     <div className="img-fluid" style={{
                             width:'180px',
-                            height:'180px',
-                            display:'inline-block',
-                            marginBottom:'30px',
+                            height:'178px',
                             backgroundImage: 'url(' + car.image + ')',
                             backgroundPosition:'center',
                             backgroundSize:'contain',
-                            backgroundRepeat:"no-repeat"
+                            backgroundRepeat:"no-repeat"                            
                         }}/>
-                    <div style={{display:'inline-block'}}>
+                        </span>
+                    <span className="col-sm-7" style={{ backgroundColor:'#f7f7f7',minHeight:'180px'}}>
                         <h3>{car.Name}</h3>
-                    </div>
                     </span>
                 </div>
 
