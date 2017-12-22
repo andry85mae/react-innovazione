@@ -1,13 +1,18 @@
 import * as React from 'react';
-
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import {Car} from '../../Models/common'
-
+import { Redirect } from 'react-router';
 import * as data from './example.json';
 
 export interface CarListProps { }
-export interface CarListState {carList:Array<any>}
-// 'HelloProps' describes the shape of props.
+export interface CarListState {
+    carList:Array<any>,
+    goToDetails:boolean,
+    goToRent:boolean
+}
+
 export class CarList extends React.Component<CarListProps, CarListState> {
+
 
     //carList:Array<any>=[]
     public divStyle:any = {
@@ -15,6 +20,8 @@ export class CarList extends React.Component<CarListProps, CarListState> {
       };
 
     public imgStyle = {};
+    public selectedCarId: number | null;
+
     constructor(prop:CarListProps, state:CarListState){
         super(prop,state);
          /*   let x= new Car();
@@ -31,6 +38,8 @@ export class CarList extends React.Component<CarListProps, CarListState> {
         }
 
         this.state = {
+            goToRent:false,
+            goToDetails:false,
             carList:[new Car({
                     Name:'500C',
                     Marca:'Fiat',
@@ -79,34 +88,94 @@ export class CarList extends React.Component<CarListProps, CarListState> {
         console.log(word)
       }
 
+    SelectCar(e:any,idCar:any):any
+    {
+        if(idCar)
+        {
+            this.selectedCarId=idCar;
+    
+            this.setState({goToDetails:true});
+        }
+    }
+
+    RentCar(e:any,idCar:any):any{
+        if(idCar)
+        {
+            this.selectedCarId=idCar;
+    
+            this.setState({goToRent:true});
+        }
+
+    }
     render(){
-        return ( 
-        <div className="col-lg-12 ">
+        if(this.state.goToDetails == true) {
+            return <Redirect to={{
+                pathname: '/CarDetails/'+this.selectedCarId,
+                state: { referrer: document.location }
+              }}/>;
+          }
+          else if(this.state.goToRent == true)
+          {
+            return <Redirect to={{
+                pathname: '/RentCar/'+this.selectedCarId,
+                state: { referrer: document.location }
+              }}/>;
+          }
+          else
+          {
+            return ( 
+            
+            <div className="col-lg-12 ">
             <div className="row">
             {this.state.carList.map((car:Car) =>{
                 
-               
-                return <div className="col-md-4" key={car.Id} style={{ marginBottom:'30px'}}>
-                    <span className="col-sm-5" style={{ border:'1px solid #f7f7f7'}}>
+
+                
+                return <div className="col-lg-4 g-mb-30">
+                  <article className="g-bg-secondary">
                     <div className="img-fluid" style={{
-                            width:'180px',
-                            height:'178px',
+                            width:'450px',
+                            height:'400px',
                             backgroundImage: 'url(' + car.image + ')',
                             backgroundPosition:'center',
                             backgroundSize:'contain',
                             backgroundRepeat:"no-repeat"                            
                         }}/>
-                        </span>
-                    <span className="col-sm-7" style={{ backgroundColor:'#f7f7f7',minHeight:'180px'}}>
-                        <h3>{car.Name}</h3>
-                    </span>
-                </div>
+                    <div className="g-pa-25">
+                      <h3 className="h4 g-font-weight-300 g-mb-15">
+                         {car.Name}
+                      </h3>
+                      <p>At vero eos et accusamus et iusto odio design issimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+                    </div>
 
+                    <ul className="u-list-inline g-font-size-12 g-brd-top g-brd-gray-light-v4 g-pa-15-20">
+                    <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
+                    <CommandBarButton
+                            primary={ true }
+                            data-automation-id='test2'
+                            iconProps={ { iconName: 'ZoomIn' } }
+                            text='Show Details'
+                            onClick={(e) => this.SelectCar(e,car.Id)}
+                        />
+
+                    <CommandBarButton
+                        primary={ true }
+                        data-automation-id='test2'
+                        iconProps={ { iconName: 'Mail' } }
+                        text='Rent Car'
+                        onClick={(e) => this.RentCar(e,car.Id)}
+                    />
+                    </div>
+                    </ul>
+                  </article>
+                </div>
             })}
                 
                 
             </div>
-        </div>
-        )
+            </div>
+            )
+        }
+        
     }
 }

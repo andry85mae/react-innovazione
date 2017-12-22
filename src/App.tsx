@@ -8,6 +8,9 @@ import {
 
 import { Home } from './Components/Home/Home';
 import {CarList} from './Components/CarList/CarList'
+import {CarDetails} from './Components/CarDetails/CarDetails'
+import { Calendar} from './Components/Calendar/Calendar'
+import {RentForm} from './Components/RentForm/RentForm'
 
 import * as $ from 'jquery';
 
@@ -85,6 +88,12 @@ class App extends React.Component {
                         <Route exact path="/" component={Home} />
 
                         <Route path="/CarList" component={CarList} />
+
+                        <Route path="/CarDetails/:Id" component={CarDetails} />
+
+                        <Route path="/Calendar" component={Calendar} />
+
+                        <Route path="/RentCar" component={RentForm} />
                   </div>
                 </div>
               </div>
