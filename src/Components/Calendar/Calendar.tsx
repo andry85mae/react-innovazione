@@ -3,17 +3,17 @@ import * as moment from 'moment';
 import * as React from 'react';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-export interface CalendarProps{ 
-    showToolBar:boolean
+export interface CalendarProps {
+    showToolBar: boolean
 }
 export interface CalendarState {
 }
 // 'HelloProps' describes the shape of props.
 export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
-    public myEventsList=[];
-    constructor(prop:CalendarProps, state:CalendarState){
-        super(prop,state);
+    public myEventsList: Array<any> = [];
+    constructor(prop: CalendarProps, state: CalendarState) {
+        super(prop, state);
         // Setup the localizer by providing the moment (or globalize) Object
         // to the correct localizer.
         BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -21,17 +21,17 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     }
 
 
-    render(){
-    return (
-        <div className='col-md-11' style={{height:'600px'}}>
-            <BigCalendar
-            events={this.myEventsList}
-            startAccessor='startDate'
-            toolbar={this.props.showToolBar}
-            endAccessor='endDate'
-            />
-        </div>
-    )
+    render() {
+        return (
+            <div className='col-md-11' style={{ height: '600px' }}>
+                <BigCalendar
+                    events={this.myEventsList}
+                    startAccessor='startDate'
+                    toolbar={this.props.showToolBar}
+                    endAccessor='endDate'
+                />
+            </div>
+        )
     }
 
 }

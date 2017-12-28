@@ -267,3 +267,13 @@ font-weight-600{
 
   font-weight:600px;
 }
+
+.invalid-feedback{
+
+  color: red;
+}
+
+input.is-invalid{
+border: 1px solid red !important;
+
+}

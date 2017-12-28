@@ -10,7 +10,9 @@ import { Home } from './Components/Home/Home';
 import {CarList} from './Components/CarList/CarList'
 import {CarDetails} from './Components/CarDetails/CarDetails'
 import { Calendar} from './Components/Calendar/Calendar'
-import {RentForm} from './Components/RentForm/RentForm'
+import {ControlledForm} from './Components/ControlledForm/ControlledForm'
+import {FormikForm} from './Components/FormikForm/FormikForm'
+import {ImmutableExample} from './Components/ImmutableExample/ImmutableExample'
 
 import * as $ from 'jquery';
 
@@ -59,12 +61,12 @@ class App extends React.Component {
                     
                 </li>
                 <li>
-                   <a href="#">
+                <NavLink exact to="/Immutable">
                         <i className="fa fa-map-marker fa-2x" />
                         <span className="nav-text">
-                            Maps
+                            Immutable Example
                         </span>
-                    </a>
+                </NavLink> 
                 </li>
 
             </ul>
@@ -93,7 +95,11 @@ class App extends React.Component {
 
                         <Route path="/Calendar" component={Calendar} />
 
-                        <Route path="/RentCar" component={RentForm} />
+                        <Route path="/RentCar" component={ControlledForm} />
+
+                        <Route path="/RentCarFormix" component={FormikForm} />
+
+                        <Route path="/Immutable" component={ImmutableExample} />
                   </div>
                 </div>
               </div>
