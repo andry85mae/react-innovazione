@@ -5,6 +5,7 @@ function randomColorPart() {
     return Math.floor(Math.random() * 255);
   };
   
+
 export function randomColor() {
     const COLOR = {
       R: randomColorPart(),
@@ -15,7 +16,7 @@ export function randomColor() {
     return `rgb(${COLOR.R}, ${COLOR.G}, ${COLOR.B})`;
   };
 
-  export const DayPickerStrings: IDatePickerStrings = {
+export const DayPickerStrings: IDatePickerStrings = {
     months: [
       'January',
       'February',
@@ -76,6 +77,7 @@ export function randomColor() {
   
     invalidInputErrorMessage: 'Invalid date format.'
   };
+
 export class Car
 {
 
@@ -115,6 +117,7 @@ export class ItemExample{
 // Define our record defaults
 
 
+
 const itemExampleDefaults  = Record({
   name: '',
   numberOwned: 0,
@@ -139,4 +142,35 @@ export class ItemExampleRecord extends itemExampleDefaults {
 
  
 }
+
+export const Event:Array<any>=  [
+  {
+    title: 'Prenotazione Maestroni Andrea',
+    allDay: true,
+    start: new Date(2018, 0, 1),
+    end: new Date(2018, 0, 2),
+  },
+  {
+    title: 'Prenotazione Massari Marco',
+    start: new Date(2018, 2, 7),
+    end: new Date(2018, 2, 10),
+  },
+
+  {
+    title: 'Prenotazione Massari Marco',
+    start: new Date(2018, 1, 20),
+    end: new Date(2018, 1, 25),
+  },
+  {
+    title: 'Prenotazione Sangalli Alberto',
+    start: new Date(2018, 2, 13, 0, 0, 0),
+    end: new Date(2018, 2, 20, 0, 0, 0),
+  },
+
+  {
+    title: 'Prenotazione Maestroni Andrea',
+    start: new Date(2018, 10, 6, 0, 0, 0),
+    end: new Date(2018, 10, 13, 0, 0, 0),
+  }
+]
 

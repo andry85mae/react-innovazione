@@ -46,7 +46,7 @@ export class CarList extends React.Component<CarListProps, CarListState> {
                 Targa: 'FB654KM',
                 KM: 1000,
                 Id: 1,
-                image: require('../../images/Car/500C.jpg')
+                image: require('../../images/Car/500C.png')
             }),
             new Car({
                 Name: 'Ferrari',
@@ -70,15 +70,15 @@ export class CarList extends React.Component<CarListProps, CarListState> {
                 Targa: 'UI890LM',
                 KM: 600,
                 Id: 4,
-                image: require('../../images/Car/renault.jpg')
+                image: require('../../images/Car/renault.png')
             }),
             new Car({
-                Name: 'Serius',
-                Marca: 'Serius',
+                Name: 'Chevrolet',
+                Marca: 'Chevrolet',
                 Targa: 'YT654MK',
                 KM: 0,
                 Id: 5,
-                image: require('../../images/Car/serius.jpg')
+                image: require('../../images/Car/chevrolet.png')
             })]
         };
     }

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { RouteComponentProps, Redirect } from 'react-router';
 import { Car } from '../../Models/common';
-import { Calendar } from '../Calendar/Calendar';
+//import { Calendar } from '../Calendar/Calendar';
 
 export interface CarDetailsProps extends RouteComponentProps<any> {
     Id: number;
@@ -31,7 +31,7 @@ export class CarDetails extends React.Component<CarDetailsProps, CarDetailsState
                 Targa: 'FB654KM',
                 KM: 1000,
                 Id: 1,
-                image: require('../../images/Car/500C.jpg')
+                image: require('../../images/Car/500C.png')
             })
         });
     }
@@ -165,10 +165,10 @@ export class CarDetails extends React.Component<CarDetailsProps, CarDetailsState
                                 </div>
 
                             </section>
-                            <section className="col-md-12">
+                            {/*<section className="col-md-12">
                                 <h3> Reserved For </h3>
                                 <Calendar showToolBar={true} ></Calendar>
-                            </section>
+                                </section>*/}
                         </div>
                     </div>
                 );

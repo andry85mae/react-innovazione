@@ -13,6 +13,7 @@ import { Calendar} from './Components/Calendar/Calendar'
 import {ControlledForm} from './Components/ControlledForm/ControlledForm'
 import {FormikForm} from './Components/FormikForm/FormikForm'
 import {ImmutableExample} from './Components/ImmutableExample/ImmutableExample'
+import {Info} from './Components/Info/Info'
 
 import * as $ from 'jquery';
 
@@ -52,12 +53,12 @@ class App extends React.Component {
                     </NavLink> 
                 </li>
                 <li className="has-subnav">
-                    <a href="#">
+                <NavLink exact to="/Info">
                        <i className="fa fa-info fa-2x" />
                         <span className="nav-text">
                             Contacts
                         </span>
-                    </a>
+                        </NavLink> 
                     
                 </li>
                 <li>
@@ -100,6 +101,9 @@ class App extends React.Component {
                         <Route path="/RentCarFormix" component={FormikForm} />
 
                         <Route path="/Immutable" component={ImmutableExample} />
+
+                        <Route path="/Info" component={Info} />
+
                   </div>
                 </div>
               </div>
