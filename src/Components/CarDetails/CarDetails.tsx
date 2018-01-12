@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { RouteComponentProps, Redirect } from 'react-router';
 import { Car } from '../../Models/common';
+import * as $ from 'jquery';
 //import { Calendar } from '../Calendar/Calendar';
 
 export interface CarDetailsProps extends RouteComponentProps<any> {
@@ -23,17 +24,25 @@ export class CarDetails extends React.Component<CarDetailsProps, CarDetailsState
     componentDidMount() {
         console.log(this.props.match.params.Id);
 
+
+        $.ajax({
+            url:'https://httpbin.org/get'
+        }).done(()=>{
         //Simulate call to obtain car whit id
-        this.setState({
-            car: new Car({
-                Name: '500C',
-                Marca: 'Fiat',
-                Targa: 'FB654KM',
-                KM: 1000,
-                Id: 1,
-                image: require('../../images/Car/500C.png')
-            })
-        });
+                this.setState({
+                    car: new Car({
+                        Name: '500C',
+                        Marca: 'Fiat',
+                        Targa: 'FB654KM',
+                        KM: 1000,
+                        Id: 1,
+                        image: require('../../images/Car/500C.png')
+                    })
+                });
+        })
+        .fail(()=>{
+            console.log('error');
+        })
     }
 
     ShowReservation(event: any) {
