@@ -101,17 +101,17 @@ export class CarDetails extends React.Component<CarDetailsProps, CarDetailsState
                                             </div>
                                         </div>
                                         <ul id="nav" className="row nopadding cd-side-navigation ui-menu-color06">
-                                            <li className="col-xs-4 col-sm-2 nopadding menuitem color1" onClick={(e) => this.ShowForm(e)}>
+                                            <li className="col-xs-4 col-sm-2 cursor-hand nopadding menuitem color1" onClick={(e) => this.ShowForm(e)}>
                                                 <span className="menuIcon">
                                                     <i className="fa fa-car"></i><div style={{ fontSize: '15px' }}>Rent</div>
                                                 </span>
                                             </li>
-                                            <li className="col-xs-4 col-sm-2 nopadding menuitem color2" onClick={(e) => this.ShowReservation(e)}>
+                                            <li className="col-xs-4 col-sm-2 cursor-hand nopadding menuitem color2" onClick={(e) => this.ShowReservation(e)}>
                                                 <span className="menuIcon">
                                                     <i className="fa fa-calendar"></i><div style={{ fontSize: '15px' }}>Reservation</div>
                                                 </span>
                                             </li>
-                                            <li className="col-xs-4 col-sm-2 nopadding menuitem color3" >
+                                            <li className="col-xs-4 col-sm-2 cursor-hand nopadding menuitem color3" >
 
                                                 <span className="menuIcon">
                                                     <i className="fa fa-info"></i><div style={{ fontSize: '15px' }}>Information</div>

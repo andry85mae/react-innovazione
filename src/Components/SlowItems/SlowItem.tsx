@@ -2,7 +2,8 @@ import * as React from 'react';
 
 export interface SlowItemProps { 
   item:any,
-  onClick:Function
+  onClick:Function,
+  onRendered:Function
 }
 export interface SlowItemState {
   item:any
@@ -14,11 +15,15 @@ export class SlowItem extends React.Component<SlowItemProps, SlowItemState> {
       super(props);
   }
 
+
   render() {
     const style = {
-      color: this.props.item.color
+      color: this.props.item.color,
+      marginRight: '5px'     
     };
 
+    this.props.onRendered();
+    
     return <span style={style} onClick={this.onClick.bind(this)}>{this.props.item.item}</span>
   }
 

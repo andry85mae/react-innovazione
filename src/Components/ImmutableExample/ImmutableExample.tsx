@@ -5,7 +5,7 @@ import { SlowItems } from '../SlowItems/SlowItems'
 import { FastItems } from '../FastItems/FastItems'
 
 import * as Immutable from 'immutable'
-import { randomColor,ItemExampleRecord } from '../../Models/common';
+import { randomColor } from '../../Models/common';
 
 const GENERATED_ITEMS_COUNT = 10000;
 
@@ -19,7 +19,7 @@ export interface ImmutableExampleState {
 export class ImmutableExample extends React.Component<ImmutableExampleProps, ImmutableExampleState> {
 
     public mutableItems: any = [];
-    public immutableItems: any = [];
+    public immutableItems: Immutable.List<any>=Immutable.List<any>();
 
     constructor(prop: ImmutableExampleProps) {
         super(prop)
@@ -28,20 +28,28 @@ export class ImmutableExample extends React.Component<ImmutableExampleProps, Imm
                 item: i,
                 color: randomColor()
             });
+
+            this.immutableItems=this.immutableItems.push(Immutable.Map({
+                item: i,
+                color: randomColor()
+            }))
         }
 
-        let x= new ItemExampleRecord(null);
+       /* let x= new ItemExampleRecord(null);
         x.name
         x.set("name","Andrea");
         x.get("prova");
-        this.immutableItems = Immutable.fromJS(this.mutableItems);
+        this.immutableItems = Immutable.List(this.mutableItems);*/
+        //this.immutableItems = Immutable.fromJS();
 
     }
+
 
     render() {
 
         return (
             <div>
+                
                 <SlowItems items={this.mutableItems} />
                 <FastItems items={this.immutableItems} />
             </div>

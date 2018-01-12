@@ -11,6 +11,7 @@ export interface SlowItemsState {
 
 export class SlowItems extends React.Component<SlowItemsProps, SlowItemsState>  {
 
+  private renderCounter:number=0;
   constructor(props: SlowItemsProps) {
     super(props);
 
@@ -19,15 +20,31 @@ export class SlowItems extends React.Component<SlowItemsProps, SlowItemsState>  
     };
   }
 
+  childRender(){
+
+    this.renderCounter=this.renderCounter+1;
+}
+
+showRendered(){
+
+  alert("Count : "+ this.renderCounter);
+  this.renderCounter=0;
+}
+
   render() {
     return (
       <div className="left">
+
         <h1>Mutable</h1>
+        <div>
+          <button className="btn btn-primary" onClick={()=>this.showRendered()}> Render Count</button>
+        </div>
         {this.state.items.map((item: any, index: any) => {
           return <SlowItem
             key={index}
             item={item}
-            onClick={this.onChangeItemColor.bind(this, index)} />
+            onClick={this.onChangeItemColor.bind(this, index)} 
+            onRendered={()=>this.childRender()}/>
         })}
       </div>
     );
