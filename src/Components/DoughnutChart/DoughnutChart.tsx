@@ -6,19 +6,65 @@ import * as $ from 'jquery';
 var echarts = require('echarts');
 
 export interface DoughnutChartProps{
+   data:number[];
 }
+
 export interface DoughnutChartState {
+
 }
 
 export class DoughnutChart extends React.Component<DoughnutChartProps, DoughnutChartState> {
 
     public myChart:any=null
-    constructor(prop: DoughnutChartProps, state: DoughnutChartState) {
-        super(prop, state);
+    public chartData:number[]=null
 
+    constructor(props: DoughnutChartProps, state: DoughnutChartState) {
+        super(props, state);
+        
+        this.chartData=props.data;
     }
 
     componentDidMount() {
+
+       /* $.ajax({
+            url: 'https://httpbin.org/get'
+        }).done((reply) => {
+
+            const data = []
+            for (var i = 0; i < 5; i++) {
+                data.push(Math.random() * 1000);
+            }
+
+            this.setState({
+                chartData: data
+            })
+            this.createChart();
+
+        })
+            .fail(() => {
+                console.log('errore');
+            })*/
+            this.createChart();
+    }
+
+    componentWillReceiveProps(nextProp:DoughnutChartProps){
+        this.chartData=nextProp.data
+        
+    }
+
+     //Destroy chart before unmount.
+    componentWillUnmount() {
+        this.myChart.dispose();
+    }
+
+    //when data updates re-create graph
+    componentWillUpdate(nextProp:DoughnutChartProps){
+        this.createChart()
+    }
+
+    createChart() {
+        if (this.myChart != null)
+            this.myChart.dispose();
 
         const el = findDOMNode(this.refs.graph);
         $(el).addClass('ciao');
@@ -61,29 +107,26 @@ export class DoughnutChart extends React.Component<DoughnutChartProps, DoughnutC
                         }
                     },
                     data:[
-                        {value:335, name:'500C'},
-                        {value:310, name:'Ferrari'},
-                        {value:234, name:'Punto'},
-                        {value:135, name:'Renault'},
-                        {value:1548, name:'Chevrolet'}
+                        {value:this.chartData[0], name:'500C'},
+                        {value:this.chartData[1], name:'Ferrari'},
+                        {value:this.chartData[2], name:'Punto'},
+                        {value:this.chartData[3], name:'Renault'},
+                        {value:this.chartData[4], name:'Chevrolet'}
                     ]
                 }
             ]
         };
-
         // use configuration item and data specified to show chart
         this.myChart.setOption(option);
+
     }
 
-     //Destroy chart before unmount.
-     componentWillUnmount() {
-        this.myChart.destroy();
-    }
 
     render() {
 
         return (<div>
             <h3>Prenotation by Cars</h3>
+            
             <div ref="graph" style={{ height: '100%', width:'100%',minHeight:'400px' }}>
 
             </div>

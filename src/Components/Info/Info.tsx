@@ -1,35 +1,65 @@
 import * as React from 'react';
-import {DoughnutChart} from '../DoughnutChart/DoughnutChart';
-import {LineChart} from '../LineChart/LineChart'
-import {BarChart} from '../BarChart/BarChart'
+import { DoughnutChart } from '../DoughnutChart/DoughnutChart';
+import { LineChart } from '../LineChart/LineChart'
+import { BarChart } from '../BarChart/BarChart'
+
+import * as $ from 'jquery';
 
 export interface InfoProps {
 
 }
 export interface InfoState {
-
+  doughnutData: any[]
 }
 
 export class Info extends React.Component<InfoProps, InfoState> {
 
+  public doughnutData: number[] = []
   constructor(prop: InfoProps, state: InfoState) {
     super(prop, state);
+    this.state = {
+      doughnutData: [100, 300, 400, 500, 600]
+
+    }
   }
 
+  refreshDataChart() {
+
+    var self = this;
+    $.ajax({
+      url: 'https://httpbin.org/get'
+    }).done((reply) => {
+
+      const data = []
+      for (var i = 0; i < 5; i++) {
+        data.push(Math.random() * 1000);
+      }
+
+      self.setState({
+        doughnutData: data
+      })
+
+    })
+      .fail(() => {
+        console.log('errore');
+      })
+
+  }
   render() {
 
     return (
       <section className="clearfix g-brd-bottom g-brd-gray-light-v4">
         <div className="row">
-            <div className="col-md-4">
-              <DoughnutChart></DoughnutChart>
-            </div>
-            <div className="col-md-4">
-              <LineChart></LineChart>
-            </div>
-            <div className="col-md-4">
-              <BarChart></BarChart>
-            </div>
+          <div className="col-md-4">
+            <button className="btn btn-primary" onClick={(e) => this.refreshDataChart()}> Refresh DoughtNut Chart From Parent</button>
+            <DoughnutChart data={this.state.doughnutData}></DoughnutChart>
+          </div>
+          <div className="col-md-4">
+            <LineChart></LineChart>
+          </div>
+          <div className="col-md-4">
+            <BarChart></BarChart>
+          </div>
         </div>
         <div className="row no-gutters">
           <div className="col-md-6 col-lg-3 g-brd-right--md g-brd-gray-light-v4">
