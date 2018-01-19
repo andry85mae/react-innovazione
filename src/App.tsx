@@ -56,7 +56,7 @@ class App extends React.Component {
                 <NavLink exact to="/Info">
                        <i className="fa fa-info fa-2x" />
                         <span className="nav-text">
-                            Contacts
+                            Statistic and Contacts
                         </span>
                         </NavLink> 
                     

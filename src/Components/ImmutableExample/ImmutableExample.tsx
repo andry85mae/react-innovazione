@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import { SlowItems } from '../SlowItems/SlowItems'
-import { FastItems } from '../FastItems/FastItems'
-
-import * as Immutable from 'immutable'
+import { SlowItems } from '../SlowItems/SlowItems';
+import { FastItems } from '../FastItems/FastItems';
+import * as Immutable from 'immutable';
 import { randomColor } from '../../Models/common';
 
 const GENERATED_ITEMS_COUNT = 10000;
@@ -52,6 +51,8 @@ export class ImmutableExample extends React.Component<ImmutableExampleProps, Imm
                 
                 <SlowItems items={this.mutableItems} />
                 <FastItems items={this.immutableItems} />
+
+                
             </div>
         )
     }

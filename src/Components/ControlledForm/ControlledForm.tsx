@@ -8,8 +8,6 @@ import {
 } from 'office-ui-fabric-react/lib/DatePicker';
 import { FormEvent } from 'react';
 
-import {PeoplePicker} from '../PeoplePicker/PeoplePicker'
-
 
 export interface ControlledFormProps extends RouteComponentProps<any> {
     Id: number
@@ -69,10 +67,6 @@ export class ControlledForm extends React.Component<ControlledFormProps, Control
                                 <input type="checkbox" className="form-check-input" checked={this.state.isActive} onChange={e => this.setState({ isActive: e.target.checked })} />
                                 is Already Authorized
                         </label>
-                        </div>
-                        <div className="form-group col-md-6">
-                            <label >To : </label>
-                            <PeoplePicker></PeoplePicker>
                         </div>
                     </span>
                     <span className="col-md-12">
